@@ -1,4 +1,3 @@
-// [Read]
 $(document).ready(function () {
     set_temp();
     show_comment();
@@ -11,27 +10,31 @@ function save_comment() {
     formData.append("sample_give", "샘플데이터");
 
     fetch('/guestbook', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
-        //console.log(data)
+        console.log(data)
         alert(data["msg"]);
     });
 }
-
+// [Comment Read]
+function show_comment() {
+    fetch('/guestbook').then((res) => res.json()).then((data) => {
+        console.log(data)
+        alert(data["msg"])
+    })
+}
+// [Temp Read]
 function set_temp() {
     fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then((res) => res.json()).then((data) => {
         console.log(data)
     });
 }
-function show_comment() {
-    fetch('/guestbook').then((res) => res.json()).then((data) => {
-        alert(data["msg"])
-    })
-}
+// [Ranking Read]
 function show_ranking() {
     fetch('/ranking').then((res) => res.json()).then((data) => {
+        console.log(data)
         alert(data["msg"])
     })
 }
-// [Date]
+// [Date Read]
 function show_date() {
     let Target = document.getElementById("date");
     let time = new Date();
