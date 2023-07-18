@@ -63,6 +63,12 @@ function show_comment() {
 function set_temp() {
     fetch("http://spartacodingclub.shop/sparta_api/weather/seoul").then((res) => res.json()).then((data) => {
         console.log(data)
+        // 변수에 데이터 담기
+        let temp = data['temp']
+        let icon = data['icon']
+        // HTML태그(id)에 각 데이터 비우기 후 삽입
+        $('#temp').empty().append(temp);
+        $('#icon').empty().append("<img src='"+icon+"'>");
     });
 }
 // [Ranking Read]
