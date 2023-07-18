@@ -69,7 +69,21 @@ function set_temp() {
 function show_ranking() {
     fetch('/ranking').then((res) => res.json()).then((data) => {
         console.log(data)
-        alert(data["msg"])
+        // crawldata라는 리스트 객체 생성(promise인 data객체를 리스트로 변환)
+        let crawldata = data['rankingresult']
+
+        // 각 변수에 지정 데이터 담기
+        let artist = crawldata['artist']
+        let title = crawldata['title']
+        let rank = crawldata['rank']
+        let rankdiffer = crawldata['rankdiffer']
+        console.log(artist,title,rank,rankdiffer)
+
+        // HTML태그(id)에 각 데이터 비우기 후 삽입
+        $('#artist').empty().append(artist);
+        $('#title').empty().append(title);
+        $('#rank').empty().append(rank);
+        $('#rankdiff').empty().append(rankdiffer);
     })
 }
 // [Date Read]
